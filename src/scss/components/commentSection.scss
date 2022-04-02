@@ -1,0 +1,46 @@
+.comment-section {
+ 
+    .input-wrapper {
+        font-size: $font-size-md;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        
+        label {
+            margin-right: 15px;
+        }
+
+        input {
+            height: 30px;
+            margin-right: 15px;
+        }
+
+        button {
+            height: 30px;
+            background-color: $color-orange;
+        }
+    }
+
+    .reviews-container { 
+        .review-wrapper {
+            margin: 15px 0;
+            padding: 10px;
+            max-width: 500px;
+            justify-content: space-between;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            border-color: $color-orange;
+            display: flex;
+            align-items: center;
+
+            .action {
+                cursor: pointer;
+                span{
+                    font-size: $font-size-lg;
+                    color: lightslategray;
+                }
+            }
+        }
+    }
+}

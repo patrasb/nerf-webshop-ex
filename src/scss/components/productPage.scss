@@ -1,10 +1,11 @@
 .product-page{
-    width: 100%;
 
     .back-button {
         margin: 15px;
         color: $color-cerise;
         font-size: $font-size-md;
+        cursor: pointer;
+        width: auto;
     }
 
     .product-information {

@@ -32,7 +32,7 @@ function ProductPage() {
     return (
       <div className="product-page">
           <div className="back-button" onClick={goBackToProductList}>
-            Back
+            <p>Back</p>
           </div>
           <div className="product-information">
             <div className="title">{product.title}</div>

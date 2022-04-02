@@ -70,16 +70,17 @@ export const removeSelectedProduct = () => (dispatch, getState) => {
 export const processReview = ( review ) => (dispatch, getState) => {
     const currentReviews = getState().reviews;
     if(!currentReviews) { 
-        dispatch({type: reviewsUpdated.type, payload: [review]}); 
+        dispatch({type: reviewsUpdated.type, payload: [{...review, id: 1}]}); 
         return; 
     }
     let newReviews = currentReviews.slice();
-    const index = newReviews.findIndex( currentReview => currentReview.productId === review.id);
+    const index = newReviews.findIndex( currentReview => currentReview.id === review.id);
 
     if(index > -1) {
         newReviews.splice(index, 1);
     } else{
-        newReviews = [...currentReviews, review];
+        const id = currentReviews.length > 0 ? parseInt(currentReviews[currentReviews.length-1].id) + 1 : 1;
+        newReviews = [...currentReviews, {...review, id}];
     }
     
     dispatch({type: reviewsUpdated.type, payload: newReviews});
