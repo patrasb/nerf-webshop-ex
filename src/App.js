@@ -1,14 +1,12 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ProductList from "./components/ProductList/ProductList";
-import ProductModal from "./components/ProductModal/ProductModal";
+import Content from "./components/Content";
 
 function App() {
   return (
     <div className="page">
       <Header/>
-      <ProductList/>
-      <ProductModal/>
+      <Content/>
       <Footer/>
     </div>
   );

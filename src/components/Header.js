@@ -3,7 +3,7 @@
 function Header() {
     return (
       <div className="header">
-          Nerf Gun Store
+          Nerf Toy Store
       </div>
     );
   }

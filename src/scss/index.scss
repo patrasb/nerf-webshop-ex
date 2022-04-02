@@ -1,5 +1,6 @@
 //fonts
 @import '@fontsource/open-sans';
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 @import './variables.scss';
 
@@ -8,4 +9,4 @@
 @import './components/header.scss';
 @import './components/footer.scss';
 @import './components/productList.scss';
-@import './components/productModal.scss';
+@import './components/productPage.scss';
