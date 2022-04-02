@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ClipLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProductList } from "../../store/reducer";
 
@@ -15,7 +16,7 @@ function ProductList() {
     dispatch(updateProductList(false));  
   }, []);
   
-  if(loading) return <div>loading...</div>;
+  if(loading) return <div className="loading-wrapper"><ClipLoader size={100}></ClipLoader></div>;
 
   return (
     <div className="product-list">

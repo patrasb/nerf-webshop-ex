@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 import { getAllProducts } from "../api/api";
 
 const slice = createSlice({
@@ -7,6 +8,7 @@ const slice = createSlice({
         productList: [],
         reviews: null,
         selectedProduct: null,
+        lastRefreshedTimestamp: null,
         ui: {
             loadingList: false,
             error: null
@@ -25,6 +27,9 @@ const slice = createSlice({
         reviewsUpdated: (main, action) => {
             main.reviews = action.payload;
         },
+        lastRefreshedTimestampUpdated: (main, action) =>{
+            main.lastRefreshedTimestamp = action.payload;
+        },
         errorReceived: (main, action) => {
             main.ui.error = action.payload;
         }
@@ -36,6 +41,7 @@ const {
     loadingListUpdated,
     selectedProductUpdated,
     reviewsUpdated,
+    lastRefreshedTimestampUpdated,
     errorReceived
 } = slice.actions;
 
@@ -44,10 +50,10 @@ export default slice.reducer;
 
 export const updateProductList = () => async (dispatch, getState) => {
     
-    //if list is there, dont load again
-    const currentProductList = getState().productList;
-    if(currentProductList?.length > 0) return;
-    
+    const lastRefreshed = getState().lastRefreshedTimestamp;
+    if(lastRefreshed && moment(lastRefreshed).add(30, 'seconds') > moment()){
+        return;
+    }
     dispatch({type: loadingListUpdated.type, payload: true});
     getAllProducts().then((response) => {
         dispatch({type: productListUpdated.type, payload: response.data});
@@ -56,6 +62,7 @@ export const updateProductList = () => async (dispatch, getState) => {
         dispatch({type: loadingListUpdated.type, payload: false});
         dispatch({type: errorReceived.type, payload: error});
     });
+    dispatch({type: lastRefreshedTimestampUpdated.type, payload: moment().format()});
     
 }
 

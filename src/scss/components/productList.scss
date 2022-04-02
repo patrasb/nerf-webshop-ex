@@ -5,6 +5,13 @@
     justify-content: center;
 }
 
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25%;
+}
+
 .product-item {
     margin: 25px;
     padding: 25px;
